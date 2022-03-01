@@ -99,14 +99,15 @@ namespace JogoVelha
                 {
                     DisplayAlert("Mensagem de vencedor", "X GANHOU!!!!!", "Fechar");
                     resetarJogo();
-                    label_vez.Text = "é a vez do " + vez;
+                    vitoria = false;
+                    label_vez.Text = "É a vez do " + vez;
                 }
                 else if(botao0.IsEnabled == false && botao1.IsEnabled == false && botao2.IsEnabled == false && botao3.IsEnabled == false && botao4.IsEnabled == false && botao5.IsEnabled == false && botao6.IsEnabled == false && botao7.IsEnabled == false && botao8.IsEnabled == false)
                 {
                     resetarJogo();
                     vitoria = false;
                     DisplayAlert("Rodada acabou", "Deu velha!!", "Fechar");
-                    label_vez.Text = "é a vez do " + vez;
+                    label_vez.Text = "É a vez do " + vez;
                 }
             }
             else
@@ -115,21 +116,39 @@ namespace JogoVelha
                 button.Text = "O";
                 testarVitoria();
                 vez = "X";
-                label_vez.Text = "é a vez do " + vez;
+                label_vez.Text = "É a vez do " + vez;
                 if (vitoria == true)
                 {
                     vez = "O";
                     DisplayAlert("Mensagem de vencedor", "O GANHOU!!!!!", "Fechar");
                     resetarJogo();
-                    label_vez.Text = "é a vez do " + vez;
+                    vitoria = false;
+                    label_vez.Text = "É a vez do " + vez;
                 }
                 else if (botao0.IsEnabled == false && botao1.IsEnabled == false && botao2.IsEnabled == false && botao3.IsEnabled == false && botao4.IsEnabled == false && botao5.IsEnabled == false && botao6.IsEnabled == false && botao7.IsEnabled == false && botao8.IsEnabled == false)
                 {
                     resetarJogo();
                     vitoria = false;
                     DisplayAlert("Rodada acabou", "Deu velha!!", "Fechar");
-                    label_vez.Text = "é a vez do " + vez;
+                    label_vez.Text = "É a vez do " + vez;
                 }
+            }
+        }
+
+        Color fundo_claro = new Color(255, 250, 250);
+        private void mudar_cor_Toggled(object sender, ToggledEventArgs e)
+        {
+            if(mudar_cor.IsToggled == false)
+            {
+                fundo.BackgroundColor = fundo_claro;
+                label_titulo.TextColor = Color.Black;
+                label_mudar_cor.TextColor = Color.Black;
+            }
+            else
+            {
+                fundo.BackgroundColor = Color.Black;
+                label_titulo.TextColor = Color.White;
+                label_mudar_cor.TextColor = Color.White;
             }
         }
     }

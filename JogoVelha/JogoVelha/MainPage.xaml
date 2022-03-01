@@ -5,18 +5,30 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="estiloBotao" TargetType="Button">                
-                <Setter Property="FontSize" Value="80"/>                
+                <Setter Property="FontSize" Value="70"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BackgroundColor" Value="#7f5af0"/>
             </Style>
 
             <Style x:Key="labelTitulo" TargetType="Label">
                 <Setter Property="FontSize" Value="45"/>
+                <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>                
+            </Style>
+            
+            <Style x:Key="labelVez" TargetType="Label">
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="TextColor" Value="#2cb67d"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Padding" Value="20"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout>
-        <Grid RowDefinitions="*, *, *, *, *" ColumnDefinitions="*, *, *" Margin="20,35,20,20">
-            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource labelTitulo}" Text="Jogo da Velha"/>
+    <StackLayout x:Name="fundo" BackgroundColor="#FFFAFA">
+        <Grid RowDefinitions="*, *, *, *, *, *" ColumnDefinitions="*, *, *" Margin="20,35,20,20">
+            
+            <Label x:Name="label_titulo" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource labelTitulo}" Text="Jogo da Velha"/>                      
 
             <Button x:Name="botao0" Grid.Row="1" Grid.Column="0" Style="{StaticResource estiloBotao}" Clicked="Button_Clicked"/>
             <Button x:Name="botao1" Grid.Row="2" Grid.Column="0" Style="{StaticResource estiloBotao}" Clicked="Button_Clicked" />
@@ -30,8 +42,40 @@
             <Button x:Name="botao7" Grid.Row="2" Grid.Column="2" Style="{StaticResource estiloBotao}" Clicked="Button_Clicked"/>
             <Button x:Name="botao8" Grid.Row="3" Grid.Column="2" Style="{StaticResource estiloBotao}" Clicked="Button_Clicked"/>
 
-            <Label x:Name="label_vez" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Text="É a vez do X"/>
+            <Label x:Name="label_vez" Grid.Row="4" Grid.Column="0" Style="{StaticResource labelVez}" Grid.ColumnSpan="3" Text="É a vez do X"/>
 
+            <StackLayout Grid.Column="2" 
+                         Grid.Row="5"                         
+                         VerticalOptions="Center"
+                         Padding="5">
+
+                <Frame BackgroundColor="Gray"                       
+                       CornerRadius="50"
+                       WidthRequest="4"
+                       HeightRequest="20"
+                       Padding="3"
+                       >
+                        
+                    <Switch Grid.Row="5" Grid.Column="1" 
+                        HorizontalOptions="Center" VerticalOptions="Center"
+                        IsToggled="false"
+                        OnColor="LightGreen"                        
+                        ThumbColor="#7f5af0"
+                        x:Name="mudar_cor"
+                        Toggled="mudar_cor_Toggled"/>                    
+                </Frame>               
+                
+                <Label Grid.Row="5" 
+                       Grid.Column="0" 
+                       Grid.ColumnSpan="2"
+                       x:Name="label_mudar_cor"
+                       TextColor="Black"
+                       Text="Modo escuro" 
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+                
+            </StackLayout>
+            
         </Grid>
     </StackLayout>
 

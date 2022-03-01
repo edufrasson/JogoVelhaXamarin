@@ -2,22 +2,33 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="JogoVelha.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="estiloBotao" TargetType="Button">                
+                <Setter Property="FontSize" Value="80"/>                
+            </Style>
 
+            <Style x:Key="labelTitulo" TargetType="Label">
+                <Setter Property="FontSize" Value="45"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>                
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <StackLayout>
         <Grid RowDefinitions="*, *, *, *, *" ColumnDefinitions="*, *, *" Margin="20,35,20,20">
-            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="Jogo da Velha"/>
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource labelTitulo}" Text="Jogo da Velha"/>
 
-            <Button x:Name="botao0" Grid.Row="1" Grid.Column="0" FontSize="90" Clicked="Button_Clicked" />
-            <Button x:Name="botao1" Grid.Row="2" Grid.Column="0" FontSize="90" Clicked="Button_Clicked" />
-            <Button x:Name="botao2" Grid.Row="3" Grid.Column="0" FontSize="90" Clicked="Button_Clicked" />
+            <Button x:Name="botao0" Grid.Row="1" Grid.Column="0" Style="{StaticResource estiloBotao}" Clicked="Button_Clicked"/>
+            <Button x:Name="botao1" Grid.Row="2" Grid.Column="0" Style="{StaticResource estiloBotao}" Clicked="Button_Clicked" />
+            <Button x:Name="botao2" Grid.Row="3" Grid.Column="0" Style="{StaticResource estiloBotao}" Clicked="Button_Clicked" />
 
-            <Button x:Name="botao3" Grid.Row="1" Grid.Column="1" FontSize="90" Clicked="Button_Clicked"/>
-            <Button x:Name="botao4" Grid.Row="2" Grid.Column="1" FontSize="90" Clicked="Button_Clicked" />
-            <Button x:Name="botao5" Grid.Row="3" Grid.Column="1" FontSize="90" Clicked="Button_Clicked" />
+            <Button x:Name="botao3" Grid.Row="1" Grid.Column="1" Style="{StaticResource estiloBotao}" Clicked="Button_Clicked"/>
+            <Button x:Name="botao4" Grid.Row="2" Grid.Column="1" Style="{StaticResource estiloBotao}" Clicked="Button_Clicked" />
+            <Button x:Name="botao5" Grid.Row="3" Grid.Column="1" Style="{StaticResource estiloBotao}" Clicked="Button_Clicked" />
 
-            <Button x:Name="botao6" Grid.Row="1" Grid.Column="2" FontSize="90" Clicked="Button_Clicked" />
-            <Button x:Name="botao7" Grid.Row="2" Grid.Column="2" FontSize="90" Clicked="Button_Clicked"/>
-            <Button x:Name="botao8" Grid.Row="3" Grid.Column="2" FontSize="90" Clicked="Button_Clicked"/>
+            <Button x:Name="botao6" Grid.Row="1" Grid.Column="2" Style="{StaticResource estiloBotao}" Clicked="Button_Clicked" />
+            <Button x:Name="botao7" Grid.Row="2" Grid.Column="2" Style="{StaticResource estiloBotao}" Clicked="Button_Clicked"/>
+            <Button x:Name="botao8" Grid.Row="3" Grid.Column="2" Style="{StaticResource estiloBotao}" Clicked="Button_Clicked"/>
 
             <Label x:Name="label_vez" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Text="É a vez do X"/>
 

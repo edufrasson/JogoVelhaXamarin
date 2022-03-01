@@ -13,12 +13,10 @@ namespace JogoVelha
         public MainPage()
         {
             InitializeComponent();
-
         }
 
         public void testarVitoria()
         {
-
             if (botao0.Text == vez && botao3.Text == vez && botao6.Text == vez)
             {
                 vitoria = true;
@@ -53,6 +51,38 @@ namespace JogoVelha
             }
         }
 
+        public void resetarJogo()
+        {
+            botao0.Text = " ";
+            botao0.IsEnabled = true;
+
+            botao1.Text = " ";
+            botao1.IsEnabled = true;
+
+            botao2.Text = " ";
+            botao2.IsEnabled = true;
+
+            botao3.Text = " ";
+            botao3.IsEnabled = true;
+
+            botao4.Text = " ";
+            botao4.IsEnabled = true;
+
+            botao5.Text = " ";
+            botao5.IsEnabled = true;
+
+            botao6.Text = " ";
+            botao6.IsEnabled = true;
+
+            botao7.Text = " ";
+            botao7.IsEnabled = true;
+
+            botao8.Text = " ";
+            botao8.IsEnabled = true;
+
+            vez = "X";
+        }
+
         string vez = "X";
         bool vitoria;
         public void Button_Clicked(object sender, EventArgs e)
@@ -67,10 +97,17 @@ namespace JogoVelha
                 label_vez.Text = "É a vez do " + vez;
                 if (vitoria == true)
                 {
-
                     DisplayAlert("Mensagem de vencedor", "X GANHOU!!!!!", "Fechar");
+                    resetarJogo();
+                    label_vez.Text = "é a vez do " + vez;
                 }
-
+                else if(botao0.IsEnabled == false && botao1.IsEnabled == false && botao2.IsEnabled == false && botao3.IsEnabled == false && botao4.IsEnabled == false && botao5.IsEnabled == false && botao6.IsEnabled == false && botao7.IsEnabled == false && botao8.IsEnabled == false)
+                {
+                    resetarJogo();
+                    vitoria = false;
+                    DisplayAlert("Rodada acabou", "Deu velha!!", "Fechar");
+                    label_vez.Text = "é a vez do " + vez;
+                }
             }
             else
             {
@@ -83,6 +120,15 @@ namespace JogoVelha
                 {
                     vez = "O";
                     DisplayAlert("Mensagem de vencedor", "O GANHOU!!!!!", "Fechar");
+                    resetarJogo();
+                    label_vez.Text = "é a vez do " + vez;
+                }
+                else if (botao0.IsEnabled == false && botao1.IsEnabled == false && botao2.IsEnabled == false && botao3.IsEnabled == false && botao4.IsEnabled == false && botao5.IsEnabled == false && botao6.IsEnabled == false && botao7.IsEnabled == false && botao8.IsEnabled == false)
+                {
+                    resetarJogo();
+                    vitoria = false;
+                    DisplayAlert("Rodada acabou", "Deu velha!!", "Fechar");
+                    label_vez.Text = "é a vez do " + vez;
                 }
             }
         }

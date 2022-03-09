@@ -118,8 +118,7 @@ namespace JogoVelha
                 vez = "X";
                 label_vez.Text = "É a vez do " + vez;
                 if (vitoria == true)
-                {
-                    vez = "O";
+                {                    
                     await DisplayAlert("Mensagem de vencedor", "O GANHOU!!!!!", "Fechar");
                     resetarJogo();
                     vitoria = false;

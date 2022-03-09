@@ -85,7 +85,7 @@ namespace JogoVelha
 
         string vez = "X";
         bool vitoria;
-        public void Button_Clicked(object sender, EventArgs e)
+        public async void Button_Clicked(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             if (vez == "X")
@@ -97,7 +97,7 @@ namespace JogoVelha
                 label_vez.Text = "É a vez do " + vez;
                 if (vitoria == true)
                 {
-                    DisplayAlert("Mensagem de vencedor", "X GANHOU!!!!!", "Fechar");
+                    await DisplayAlert("Mensagem de vencedor", "X GANHOU!!!!!", "Fechar");
                     resetarJogo();
                     vitoria = false;
                     label_vez.Text = "É a vez do " + vez;
@@ -106,7 +106,7 @@ namespace JogoVelha
                 {
                     resetarJogo();
                     vitoria = false;
-                    DisplayAlert("Rodada acabou", "Deu velha!!", "Fechar");
+                    await DisplayAlert("Rodada acabou", "Deu velha!!", "Fechar");
                     label_vez.Text = "É a vez do " + vez;
                 }
             }
@@ -120,7 +120,7 @@ namespace JogoVelha
                 if (vitoria == true)
                 {
                     vez = "O";
-                    DisplayAlert("Mensagem de vencedor", "O GANHOU!!!!!", "Fechar");
+                    await DisplayAlert("Mensagem de vencedor", "O GANHOU!!!!!", "Fechar");
                     resetarJogo();
                     vitoria = false;
                     label_vez.Text = "É a vez do " + vez;
@@ -129,7 +129,7 @@ namespace JogoVelha
                 {
                     resetarJogo();
                     vitoria = false;
-                    DisplayAlert("Rodada acabou", "Deu velha!!", "Fechar");
+                    await DisplayAlert("Rodada acabou", "Deu velha!!", "Fechar");
                     label_vez.Text = "É a vez do " + vez;
                 }
             }

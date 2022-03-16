@@ -45,7 +45,7 @@
             <Label x:Name="label_vez" Grid.Row="4" Grid.Column="0" Style="{StaticResource labelVez}" Grid.ColumnSpan="3" Text="É a vez do X"/>
 
             <StackLayout Grid.Column="2" 
-                         Grid.Row="5"                         
+                         Grid.Row="5"                          
                          VerticalOptions="Center"
                          Padding="5">
 
@@ -62,7 +62,7 @@
                         OnColor="LightGreen"                        
                         ThumbColor="#7f5af0"
                         x:Name="mudar_cor"
-                        Toggled="mudar_cor_Toggled"/>                    
+                        Toggled="Mudar_Cor_Toggled"/>                    
                 </Frame>               
                 
                 <Label Grid.Row="5" 

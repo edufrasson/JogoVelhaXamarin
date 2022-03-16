@@ -10,12 +10,19 @@ namespace JogoVelha
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage()
+        // atributos
+        string vez = "X";
+        bool vitoria;
+        Color fundo_claro = new Color(255, 250, 250);
+
+        // metodos
+        public MainPage() // Método construtor (executado quando instancia a classe)
         {
             InitializeComponent();
         }
 
-        public void testarVitoria()
+        // Metodo que verifica se as posições de vitoria do botao tem o mesmo valor da vez
+        public void Testar_Vitoria()
         {
             if (botao0.Text == vez && botao3.Text == vez && botao6.Text == vez)
             {
@@ -51,7 +58,8 @@ namespace JogoVelha
             }
         }
 
-        public void resetarJogo()
+        // Reseta o jogo, adicionando um texto vazio e habilitando o clique em todos os botões
+        public void Resetar_Jogo()
         {
             botao0.Text = " ";
             botao0.IsEnabled = true;
@@ -82,60 +90,66 @@ namespace JogoVelha
 
             vez = "X";
         }
-
-        string vez = "X";
-        bool vitoria;
+        
+        // Evento de clique dos botões
         public async void Button_Clicked(object sender, EventArgs e)
         {
+            // object sender -> objeto que lançou o envento clicked
+            
+            // Adicionando a classe do botao para o objeto sender genérico
             Button button = (Button)sender;
+
+            // Desabilita o botao
+
+            button.IsEnabled = false;
+
             if (vez == "X")
-            {
-                button.IsEnabled = false;
+            {               
                 button.Text = "X";
-                testarVitoria();
+                Testar_Vitoria();
                 vez = "O";
                 label_vez.Text = "É a vez do " + vez;
                 if (vitoria == true)
                 {
+                    // Await espera uma resposta do usuario para continuar a execução do código
                     await DisplayAlert("Mensagem de vencedor", "X GANHOU!!!!!", "Fechar");
-                    resetarJogo();
+                    Resetar_Jogo();
                     vitoria = false;
                     label_vez.Text = "É a vez do " + vez;
                 }
                 else if(botao0.IsEnabled == false && botao1.IsEnabled == false && botao2.IsEnabled == false && botao3.IsEnabled == false && botao4.IsEnabled == false && botao5.IsEnabled == false && botao6.IsEnabled == false && botao7.IsEnabled == false && botao8.IsEnabled == false)
                 {
-                    resetarJogo();
+                    Resetar_Jogo();
                     vitoria = false;
                     await DisplayAlert("Rodada acabou", "Deu velha!!", "Fechar");
                     label_vez.Text = "É a vez do " + vez;
                 }
             }
             else
-            {
-                button.IsEnabled = false;
+            {                
                 button.Text = "O";
-                testarVitoria();
+                Testar_Vitoria();
                 vez = "X";
                 label_vez.Text = "É a vez do " + vez;
                 if (vitoria == true)
                 {                    
                     await DisplayAlert("Mensagem de vencedor", "O GANHOU!!!!!", "Fechar");
-                    resetarJogo();
+                    Resetar_Jogo();
                     vitoria = false;
                     label_vez.Text = "É a vez do " + vez;
                 }
                 else if (botao0.IsEnabled == false && botao1.IsEnabled == false && botao2.IsEnabled == false && botao3.IsEnabled == false && botao4.IsEnabled == false && botao5.IsEnabled == false && botao6.IsEnabled == false && botao7.IsEnabled == false && botao8.IsEnabled == false)
                 {
-                    resetarJogo();
+                    Resetar_Jogo();
                     vitoria = false;
                     await DisplayAlert("Rodada acabou", "Deu velha!!", "Fechar");
                     label_vez.Text = "É a vez do " + vez;
                 }
             }
         }
-
-        Color fundo_claro = new Color(255, 250, 250);
-        private void mudar_cor_Toggled(object sender, ToggledEventArgs e)
+       
+        // Função para trocar o modo de cor
+        private void Mudar_Cor_Toggled(object sender, ToggledEventArgs e)
         {
             if(mudar_cor.IsToggled == false)
             {
